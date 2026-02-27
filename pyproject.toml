@@ -1,0 +1,74 @@
+[project]
+name = "ipython-neo4j"
+version = "0.1.0"
+description = "IPython/Jupyter magic commands for Neo4j Cypher queries (%cypher / %%cypher)"
+readme = "README.md"
+license = { file = "LICENSE" }
+authors = [
+    { name = "Michael Hunger", email = "github@jexp.de" }
+]
+keywords = ["neo4j", "cypher", "ipython", "jupyter", "graph", "database"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Framework :: IPython",
+    "Framework :: Jupyter",
+    "Framework :: Jupyter :: JupyterLab",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Database",
+    "Topic :: Scientific/Engineering :: Visualization",
+]
+requires-python = ">=3.10"
+dependencies = [
+    "ipython>=7.0",
+    "neo4j>=6.0.0",
+    "neo4j-rust-ext>=6.0.0",
+    "pandas>=1.3",
+    "neo4j-viz>=1.0.0",
+]
+
+[project.optional-dependencies]
+dotenv = ["python-dotenv>=1.0"]
+
+[project.entry-points."ipython.extensions"]
+ipython_neo4j = "ipython_neo4j"
+
+[project.urls]
+Homepage = "https://github.com/neo4j-labs/ipython-neo4j"
+Repository = "https://github.com/neo4j-labs/ipython-neo4j"
+Documentation = "https://github.com/neo4j-labs/ipython-neo4j#readme"
+"Bug Tracker" = "https://github.com/neo4j-labs/ipython-neo4j/issues"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ipython_neo4j"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+asyncio_mode = "auto"
+
+[dependency-groups]
+dev = [
+    "jupyter>=1.0",
+    "pytest>=7.0",
+    "pytest-asyncio>=0.21",
+    "pytest-mock>=3.0",
+    "python-dotenv>=1.2.1",
+]
+
+[tool.uv]
+# Publish to PyPI:  uv publish
+# Publish to TestPyPI first to verify: uv publish --publish-url https://test.pypi.org/legacy/
+publish-url = "https://upload.pypi.org/legacy/"
