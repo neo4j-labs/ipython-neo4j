@@ -1,5 +1,7 @@
 # ipython-neo4j
 
+> This is an experimental Neo4j Labs project and not part of Neo4j's supported product lineup. See the [Neo4j Labs disclaimer](./LABS_DISCLAIMER.txt).
+
 IPython / Jupyter magic commands for [Neo4j](https://neo4j.com) Cypher queries.
 A modern replacement for [icypher](https://pypi.org/project/icypher/) built on the
 [neo4j-rust-ext](https://pypi.org/project/neo4j-rust-ext/) Bolt driver with first-class
